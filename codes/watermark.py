@@ -108,27 +108,29 @@ def model_maker(model_name, num_classes):
         #model = model_names[model_name]
         model = torchvision.models.mobilenet_v2(pretrained=True)
         model.classifier[1] = nn.Linear(model.classifier[1].in_features, num_classes)
-    elif model_name == 'GoogleNet':
-        #model = model_names[model_name]
-        model = torchvision.models.googlenet(pretrained=True)
-        model.fc = nn.Linear(model.fc.in_features, num_classes)
-    elif model_name == 'ViT-8':
-        model = ViT(image_size = 224,
-                    patch_size = 32,
-                    num_classes = num_classes,
-                    dim = 64,
-                    depth = 6,
-                    heads = 8,
-                    mlp_dim = 128,
-                    dropout = 0.1,
-                    emb_dropout = 0.1)
+    elif model_name == 'DenseNet121':
+        model = torchvision.models.densenet121(pretrained=True)
+        model.classifier = nn.Linear(model.classifier.in_features, num_classes)
+    elif model_name == 'DenseNet169':
+        model = torchvision.models.densenet169(pretrained=True)
+        model.classifier = nn.Linear(model.classifier.in_features, num_classes)
     elif model_name == 'ViT-16':
         model = ViT(image_size = 224,
                     patch_size = 32,
                     num_classes = num_classes,
                     dim = 64,
-                    depth = 6,
-                    heads = 16,
+                    depth = 16,
+                    heads = 8,
+                    mlp_dim = 128,
+                    dropout = 0.1,
+                    emb_dropout = 0.1) 
+    elif model_name == 'ViT-32':
+        model = ViT(image_size = 224,
+                    patch_size = 32,
+                    num_classes = num_classes,
+                    dim = 64,
+                    depth = 32,
+                    heads = 8,
                     mlp_dim = 128,
                     dropout = 0.1,
                     emb_dropout = 0.1)

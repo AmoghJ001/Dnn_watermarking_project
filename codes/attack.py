@@ -112,12 +112,17 @@ def ftll_model_loader(model_name):
             param.requires_grad = False
         for param in model.classifier[1].parameters():
             param.requires_grad = True
-    elif model_name == 'GoogleNet':
+    elif model_name == 'DenseNet121':
         for param in model.parameters():
             param.requires_grad = False
-        for param in model.classifier[1].parameters():
+        for param in model.classifier.parameters():
             param.requires_grad = True
-    elif model_name == 'ViT-8':
+    elif model_name == 'DenseNet169':
+        for param in model.parameters():
+            param.requires_grad = False
+        for param in model.classifier.parameters():
+            param.requires_grad = True
+    elif model_name == 'ViT-16':
 #         model = ViT(image_size = 224,
 #                     patch_size = 32,
 #                     num_classes = num_classes,
@@ -129,9 +134,9 @@ def ftll_model_loader(model_name):
 #                     emb_dropout = 0.1)
         for param in model.parameters():
             param.requires_grad = False
-        for param in model.classifier[1].parameters():
+        for param in model.classifier.parameters():
             param.requires_grad = True
-    elif model_name == 'ViT-16':
+    elif model_name == 'ViT-32':
 #         model = ViT(image_size = 224,
 #                     patch_size = 32,
 #                     num_classes = num_classes,
@@ -141,9 +146,9 @@ def ftll_model_loader(model_name):
 #                     mlp_dim = 128,
 #                     dropout = 0.1,
 #                     emb_dropout = 0.1)
-        for param in model.parameters():
+       for param in model.parameters():
             param.requires_grad = False
-        for param in model.classifier[1].parameters():
+        for param in model.classifier.parameters():
             param.requires_grad = True
     else:
         print("Unknown Model Name Error!")

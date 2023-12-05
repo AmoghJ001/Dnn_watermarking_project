@@ -13,6 +13,12 @@ This is the official repository for our project titled **"Towards more robust In
 ### Usage Instructions
 (Model_name is the only mandatory argument), all other arguments are optional
 
+For watermarking:
 ```python
 !python watermark.py --model_name='ResNet18' 
+```
+
+For attacking the watermarked model (the code automatically fetches for the saved weight file in the models folder, alternatively you can also pass the model path):
+```python
+!python attack.py --model_name='ResNet18'
 ```
